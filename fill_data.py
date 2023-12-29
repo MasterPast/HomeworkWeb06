@@ -19,7 +19,7 @@ def generate_fake_data(num_stud, num_grp, num_tch, num_subj, num_mrk):
     fake_marks = []
     fake_date_marks = []
 
-    fake_data = faker.Faker()
+    fake_data = faker.Faker(locale='uk_UA')
 
     for _ in range(num_stud):
         fake_students.append(fake_data.name())
@@ -32,8 +32,8 @@ def generate_fake_data(num_stud, num_grp, num_tch, num_subj, num_mrk):
         fake_subjects.append(fake_data.job())
     for _ in range(num_mrk * num_stud):
         fake_marks.append(randrange(1, 6))
-        fake_date_marks.append(fake_data.date())
-
+        fake_date_marks.append(fake_data.date_between(
+            start_date='-7d', end_date='today'))
 
     return fake_students, fake_students_address, fake_groups, fake_teachers, fake_subjects, fake_marks, fake_date_marks
 

@@ -1,6 +1,9 @@
 # Знайти середній бал на потоці (по всій таблиці оцінок).
 import sqlite3
-from query_funcs import sql_query_4
+
+sql_query_4 = """
+SELECT ROUND(AVG(mark),3) FROM marks
+"""
 
 
 def execute_query(sql: str) -> list:
